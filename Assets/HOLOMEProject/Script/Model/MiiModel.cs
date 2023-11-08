@@ -9,10 +9,12 @@ public class MiiModel : MonoBehaviour
 
     private void Awake()
     {
-        gameObject = GameObject.Find("mii");
+        gameObject = GameObject.Find("Mii");
         animationDictionary = new Dictionary<string, string>()
         {
-            { "mii", "isAnimation" },
+            { "Mii", "isMove" },
+            //{ "mii", "isFloat" },
+            //{ "mii", "isShakingHead" },
         };
     }
 
