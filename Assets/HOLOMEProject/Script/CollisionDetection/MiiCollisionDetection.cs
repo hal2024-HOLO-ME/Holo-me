@@ -11,6 +11,11 @@ public class MiiCollisionDetection : BaseCollisionDetection
         miiModel = gameObject.AddComponent<MiiModel>();
     }
 
+    public void SetMiiModel(MiiModel miiModel)
+    {
+        this.miiModel = miiModel;
+    }
+
     protected override GameObject GetGameObject()
     {
         return miiModel.GetGameObject();
