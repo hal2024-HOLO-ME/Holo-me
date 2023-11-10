@@ -256,7 +256,7 @@
     },
     "com.unity.xr.arsubsystems": {
       "version": "5.0.2",
-      "depth": 0,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.xr.arfoundation": "5.0.2"
