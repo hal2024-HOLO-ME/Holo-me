@@ -15,6 +15,13 @@ public class FbxLoader : MonoBehaviour
         { "Holo", typeof(HoloCollisionDetection) },
     };
 
+    public FbxLoader() { }
+
+    public FbxLoader(string gameObjectName)
+    {
+        this.gameObjectName = gameObjectName;
+    }
+
     private void Awake()
     {
         GenerateObject();
