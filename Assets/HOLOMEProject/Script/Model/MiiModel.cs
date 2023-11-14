@@ -2,34 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiiModel : MonoBehaviour
+public class MiiModel : BaseCharacterModel
 {
-    private new GameObject gameObject;
-    private Dictionary<string, string> animationDictionary;
-
-    private void Awake()
+    public MiiModel()
     {
         gameObject = GameObject.Find("Mii");
         animationDictionary = new Dictionary<string, string>()
         {
-            { "Mii", "isMove" },
-            //{ "mii", "isFloat" },
-            //{ "mii", "isShakingHead" },
+            // key：衝突したオブジェクトの名前
+            // value：アニメーションのbooleanの名前
+            { "face", "isFallDown" },
+            { "body", "isHappy" },
+/*            { "", "isFloat" },
+            { "", "isGetUp" },
+            { "", "isEat" },*/
         };
-    }
-
-    public GameObject GetGameObject()
-    {
-        return gameObject;
-    }
-
-    public void AddAnimationDictionary(string key, string value)
-    {
-        animationDictionary.Add(key, value);
-    }
-
-    public Dictionary<string, string> GetAnimationDictionary()
-    {
-        return animationDictionary;
     }
 }
