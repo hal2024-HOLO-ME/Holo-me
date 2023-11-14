@@ -4,15 +4,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 
 public class FbxLoader : MonoBehaviour
 {
     public string gameObjectName;
     private new GameObject gameObject;
-    public Dictionary<string, Type> gameObjectNameList = new()
+    public Dictionary<string, (string[],Type)> gameObjectNameList = new()
     {
-        { "Mii", typeof(MiiCollisionDetection) },
-        { "Holo", typeof(HoloCollisionDetection) },
+        { "Mii", (new string[] {"body", "face"}, typeof(MiiCollisionDetection)) },
+        { "Holo", (new string[] {}, typeof(HoloCollisionDetection)) },
     };
 
     public FbxLoader() { }
@@ -28,56 +29,62 @@ public class FbxLoader : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒIƒuƒWƒFƒNƒg‚ğ¶¬‚µAHierarchy‚É’Ç‰Á‚·‚éB
-    /// </summary>
+    /// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã—ã€Hierarchyã«è¿½åŠ ã™ã‚‹ã€‚    /// </summary>
     private void GenerateObject()
     {
-        // w’è‚µ‚½ƒtƒ@ƒCƒ‹‚Ö‚ÌƒpƒX‚©‚çFBXƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚ŞB
-        // Resources/Object/ˆÈ‰º‚É”z’u‚·‚é‚±‚ÆB
+        // æŒ‡å®šã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã¸ã®ãƒ‘ã‚¹ã‹ã‚‰FBXãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚€ã€‚
+        // Resources/Object/ä»¥ä¸‹ã«é…ç½®ã™ã‚‹ã“ã¨ã€‚
         GameObject fbxObject = Resources.Load<GameObject>("Object/" + gameObjectName);
 
         if (fbxObject != null )
         {
-            // FBX‚ğHierarchy‚É’Ç‰Á‚·‚é
+            // FBXã‚’Hierarchyã«è¿½åŠ ã™ã‚‹
             gameObject = Instantiate(fbxObject);
             gameObject.name = gameObjectName;
             gameObject.transform.SetParent(transform, false);
-            // size‚ğ’²®‚·‚é
-            gameObject.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+            // sizeã‚’èª¿æ•´ã™ã‚‹
+            gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            gameObject.transform.position = new Vector3(1f, 1f, 3f);
+            gameObject.transform.rotation = Quaternion.Euler(1, 193, 1);
 
-            // Animator‚ğ’Ç‰Á
+            foreach (Transform child in gameObject.transform)
+            {
+                // childã®nameãŒgameObjectNameList[gameObjectName].Item1ã«å«ã¾ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã€‚
+                if (Array.Exists(gameObjectNameList[gameObjectName].Item1, element => element == child.name))
+                {
+                    child.gameObject.AddComponent<BoxCollider>();
+                    AddRigidBody(child.gameObject);
+                }
+            }
+
             AddAnimatorController();
 
-            // box collider‚ğ’Ç‰Á
-            gameObject.AddComponent<BoxCollider>();
-
-            // Rigidbody‚ğ’Ç‰Á
-            AddRigidBody();
-
             GameObject exfrowerObject = GameObject.Find("exfrower");
-            exfrowerObject.AddComponent(gameObjectNameList[gameObjectName]);
+            exfrowerObject.AddComponent(gameObjectNameList[gameObjectName].Item2);
         }
         else
         {
-            Debug.LogError("FBXƒtƒ@ƒCƒ‹‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ: " + gameObjectName);
+            Debug.LogError("FBXãƒ•ã‚¡ã‚¤ãƒ«ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“: " + gameObjectName);
         }
     }
 
     /// <summary>
-    /// ¶¬‚µ‚½Object‚É‘Î‚µ‚ÄAAnimator‚ğ’Ç‰Á‚·‚éB
+    /// ç”Ÿæˆã—ãŸObjectã«å¯¾ã—ã¦ã€Animatorã‚’è¿½åŠ ã™ã‚‹ã€‚
     /// </summary>
     private void AddAnimatorController()    
     {
-        // Animator‚ğ’Ç‰Á
         Animator animator = gameObject.AddComponent<Animator>();
         RuntimeAnimatorController controller = Resources.Load("animation/"+ gameObjectName
             +" Animator Controller") as RuntimeAnimatorController;
         animator.runtimeAnimatorController = controller;
     }
 
-    private void AddRigidBody()
+    /// <summary>
+    /// ç”Ÿæˆã—ãŸObjectã«å¯¾ã—ã¦ã€RigidBodyã‚’è¿½åŠ ã™ã‚‹ã€‚
+    /// </summary>
+    private void AddRigidBody(GameObject childObject)
     {
-        Rigidbody rigidbody = gameObject.AddComponent<Rigidbody>();
+        Rigidbody rigidbody = childObject.AddComponent<Rigidbody>();
         rigidbody.isKinematic = true;
     }
 }
