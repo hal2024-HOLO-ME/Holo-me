@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.Utilities;
 using UniRx;
+using Unity.VisualScripting;
 
 /// <summary>
 /// オブジェクトの状態を監視する。
@@ -11,49 +12,59 @@ using UniRx;
 /// </summary>
 public class HealthMonitor : MonoBehaviour
 {
+    private CharacterModel characterModel;
+
     /// <summary>
     /// 時刻判定(分刻み)のトリガー
     /// </summary>
-    IDisposable p_MinuteTimeTrigger;
+    IDisposable minuteTimeTrigger;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        // 1分毎にトリガーを実行する
-        p_MinuteTimeTrigger = UniRx.Observable
+        // CharacterModelを取得する
+        characterModel = gameObject.GetComponent<CharacterModel>();
+
+        // 初めに一回実行し、以降は1分毎に実行する。
+        SetSleepStateIfInSleepTime();
+
+        // 1分毎にトリガーを実行する。
+        minuteTimeTrigger = UniRx.Observable
             .Timer(TimeSpan.FromSeconds(60.0f - DateTime.Now.Second), TimeSpan.FromMinutes(1.0f))
             .SubscribeOnMainThread()
             .Subscribe(x =>
             {
-                ChangeOverTimeCondition(DateTime.Now);
+                SetSleepStateIfInSleepTime();
             })
             .AddTo(this);
     }
 
     /// <summary>
-    /// 時間経過によるコンディション変化を管理する
+    /// 時間範囲なら就寝状態にする。
     /// </summary>
-    private void ChangeOverTimeCondition(DateTime a_DateTime)
+    private void SetSleepStateIfInSleepTime()
     {
-        Debug.Log("ChangeOverTimeCondition : " + a_DateTime.ToString());
-        CheckSleepTime(a_DateTime);
+        bool isSleepTime = CheckSleepTime();
+
+        if (!isSleepTime) return;
+
+        // 睡眠時刻の範囲の場合は、睡眠状態にする。
+        Animator animator = characterModel.GetGameObject().GetComponent<Animator>();
+        animator.SetBool("isFallDown", true);
     }
 
     /// <summary>
     /// 睡眠時刻をチェックする
     /// </summary>
-    private void CheckSleepTime(DateTime a_DataTime)
+    /// <returns>睡眠時刻の範囲ならtrueを返す</returns>
+    public bool CheckSleepTime()
     {
-        int fromHour = 22;
-        int limitHour = 6;
+        int fromHour = 10;
+        int limitHour = 17;
         TimeSpan timeOfDay = DateTime.Now.TimeOfDay;
-        TimeSpan startTime = new TimeSpan(fromHour, 0, 0);
-        TimeSpan endTime = new TimeSpan(limitHour, 0, 0);
+        TimeSpan startTime = new(fromHour, 0, 0);
+        TimeSpan endTime = new(limitHour, 0, 0);
 
         // 睡眠時刻の範囲内かどうかを判定する。
-        if ((startTime <= timeOfDay) && (timeOfDay <= endTime))
-        {
-            // 範囲内の場合は、睡眠時刻の処理を行う。
-        }
+        return (startTime <= timeOfDay) && (timeOfDay <= endTime);
     }
 }
