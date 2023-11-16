@@ -36,9 +36,6 @@ public class FbxLoader : MonoBehaviour
             GameObject generatedObject = Instantiate(fbxObject);
             generatedObject.name = gameObjectName;
             generatedObject.transform.SetParent(transform, false);
-            // sizeを調整する
-            generatedObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            generatedObject.transform.SetPositionAndRotation(new Vector3(1f, 1f, 3f), Quaternion.Euler(1, 193, 1));
 
             Dictionary<string, string[]> gameObjectList = new()
                 {
