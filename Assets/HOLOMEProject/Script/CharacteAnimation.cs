@@ -13,11 +13,7 @@ public class AnimationTimer : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        if (animator == null)
-        {
-            Debug.LogError("Animatorがなかったよ");
-            return;
-        }
+        if (animator == null) return;
 
         var parameterChangedSubject = new Subject<Unit>();
 
@@ -54,8 +50,6 @@ public class AnimationTimer : MonoBehaviour
 
     void OnTimerExpired()
     {
-        Debug.Log("30秒何も起きなかった");
-
         animator.SetBool("isFallDown", true);
 
         //10秒ぐらいでtrueをfalseにする（animationの時間次第）
@@ -69,7 +63,6 @@ public class AnimationTimer : MonoBehaviour
     void OffFlag()
     {
         animator.SetBool("isFallDown", false);
-        Debug.Log("アニメーションOFF");
     }
 
     void OnDestroy()
