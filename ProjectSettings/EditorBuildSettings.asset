@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ObjectCheck.unity
     guid: 6c735dc9e28950547ab3da330bb1c9d7
+  - enabled: 1
+    path: Assets/Scenes/TopScene.unity
+    guid: f32626633d4234c4f8615672268db39f
+  - enabled: 1
+    path: Assets/Scenes/PersonalityDiagnosis.unity
+    guid: d00be5524de23664fb3189f8cc09b8e2
   m_configObjects:
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: b7be74252de496c4f8a96b91925a68de, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8792bf4b02ca3ec4a9eec3f891fc58f5, type: 2}
