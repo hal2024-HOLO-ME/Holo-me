@@ -1,20 +1,13 @@
-using OpenCover.Framework.Model;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
 
+/// <summary>
+/// オブジェクトの生成を行う。
+/// </summary>
 public class FbxLoader : MonoBehaviour
 {
     public string gameObjectName;
-    private new GameObject gameObject;
-    public Dictionary<string, (string[],Type)> gameObjectNameList = new()
-    {
-        { "Mii", (new string[] {"body", "face"}, typeof(MiiCollisionDetection)) },
-        { "Holo", (new string[] {}, typeof(HoloCollisionDetection)) },
-    };
 
     public FbxLoader() { }
 
@@ -29,7 +22,8 @@ public class FbxLoader : MonoBehaviour
     }
 
     /// <summary>
-    /// オブジェクトを生成し、Hierarchyに追加する。    /// </summary>
+    /// オブジェクトを生成し、Hierarchyに追加する。
+    /// </summary>
     private void GenerateObject()
     {
         // 指定したファイルへのパスからFBXファイルを読み込む。
@@ -39,28 +33,35 @@ public class FbxLoader : MonoBehaviour
         if (fbxObject != null )
         {
             // FBXをHierarchyに追加する
-            gameObject = Instantiate(fbxObject);
-            gameObject.name = gameObjectName;
-            gameObject.transform.SetParent(transform, false);
-            // sizeを調整する
-            gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            gameObject.transform.position = new Vector3(1f, 1f, 3f);
-            gameObject.transform.rotation = Quaternion.Euler(1, 193, 1);
+            GameObject generatedObject = Instantiate(fbxObject);
+            generatedObject.name = gameObjectName;
+            generatedObject.transform.SetParent(transform, false);
 
-            foreach (Transform child in gameObject.transform)
+            Dictionary<string, string[]> gameObjectList = new()
+                {
+                    { "Mii", new string[] {"body", "face"} },
+                    { "Holo", new string[] { } },
+                };
+            foreach (Transform child in generatedObject.transform)
             {
-                // childのnameがgameObjectNameList[gameObjectName].Item1に含まれているかどうか。
-                if (Array.Exists(gameObjectNameList[gameObjectName].Item1, element => element == child.name))
+                // childのnameがgameObjectNameList[gameObjectName]に含まれているかどうか。
+                if (Array.Exists(gameObjectList[gameObjectName], element => element == child.name))
                 {
                     child.gameObject.AddComponent<BoxCollider>();
                     AddRigidBody(child.gameObject);
                 }
             }
 
-            AddAnimatorController();
+            AddAnimatorController(generatedObject);
+
+
+            CharacterModel characterModel = AddCharacterModel(generatedObject);
 
             GameObject exfrowerObject = GameObject.Find("exfrower");
-            exfrowerObject.AddComponent(gameObjectNameList[gameObjectName].Item2);
+            CollisionDetection baseCollisionDetection = exfrowerObject.AddComponent<CollisionDetection>();
+            baseCollisionDetection.SetCharacterModel(characterModel);
+
+            generatedObject.AddComponent<HealthMonitor>();
         }
         else
         {
@@ -71,7 +72,7 @@ public class FbxLoader : MonoBehaviour
     /// <summary>
     /// 生成したObjectに対して、Animatorを追加する。
     /// </summary>
-    private void AddAnimatorController()    
+    private void AddAnimatorController(GameObject gameObject)    
     {
         Animator animator = gameObject.AddComponent<Animator>();
         RuntimeAnimatorController controller = Resources.Load("animation/"+ gameObjectName
@@ -86,5 +87,17 @@ public class FbxLoader : MonoBehaviour
     {
         Rigidbody rigidbody = childObject.AddComponent<Rigidbody>();
         rigidbody.isKinematic = true;
+    }
+
+    /// <summary>
+    /// 生成したObjectに対して、CharacterModelを追加する。
+    /// </summary>
+    /// <returns>モデルのクラス</returns>
+    private CharacterModel AddCharacterModel(GameObject childObject)
+    {
+        CharacterModel characterModel = childObject.AddComponent<CharacterModel>();
+        characterModel.SetGameObject(childObject);
+        characterModel.SetAnimatorParameters(childObject.GetComponent<Animator>().parameters);
+        return characterModel;
     }
 }
