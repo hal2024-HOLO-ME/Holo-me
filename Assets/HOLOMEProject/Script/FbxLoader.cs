@@ -40,6 +40,7 @@ public class FbxLoader : MonoBehaviour
             Dictionary<string, string[]> gameObjectList = new()
                 {
                     { "Mii", new string[] {"body", "face"} },
+                    { "MiiGhost", new string[] {"body", "face"} },
                     { "Holo", new string[] { } },
                 };
             foreach (Transform child in generatedObject.transform)
