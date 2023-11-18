@@ -13,7 +13,6 @@ using Unity.VisualScripting;
 public class HealthMonitor : MonoBehaviour
 {
     private CharacterModel characterModel;
-
     /// <summary>
     /// 時刻判定(分刻み)のトリガー
     /// </summary>
@@ -43,13 +42,22 @@ public class HealthMonitor : MonoBehaviour
     /// </summary>
     private void SetSleepStateIfInSleepTime()
     {
+        Animator animator = characterModel.GetGameObject().GetComponent<Animator>();
+
         bool isSleepTime = CheckSleepTime();
 
-        if (!isSleepTime) return;
+        bool isSleepAnimator = animator.GetBool("isSleep");
+        if( !isSleepTime )
+        {
+            if( isSleepAnimator )
+            {
+                animator.SetBool("isSleep", false);
+            }
+            return;
+        }
 
         // 睡眠時刻の範囲の場合は、睡眠状態にする。
-        Animator animator = characterModel.GetGameObject().GetComponent<Animator>();
-        animator.SetBool("isFallDown", true);
+        animator.SetBool("isSleep", true);
     }
 
     /// <summary>
