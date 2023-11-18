@@ -1,8 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
-using TMPro;
-using Microsoft.MixedReality.Toolkit;
 using MixedReality.Toolkit.UX;
 
 public class Login : MonoBehaviour
