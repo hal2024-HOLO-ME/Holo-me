@@ -30,12 +30,12 @@ public class CollisionDetection : MonoBehaviour
     private void HandleCollision(string collisionObjectName)
     {
         // HealthMonitorの時間以内の場合は、衝突してもアニメーションを発火させない。
-        HealthMonitor healthMonitor = characterModel.GetGameObject().AddComponent<HealthMonitor>();
-        // if (healthMonitor.CheckSleepTime()) return;
+        HealthMonitor healthMonitor = characterModel.GetGameObject().GetComponent<HealthMonitor>();
+        if (healthMonitor.CheckSleepTime()) return;
 
         // animator(bool)を実行する。
-/*        Animator animator = characterModel.GetGameObject().GetComponent<Animator>();
-        animator.SetBool("isHappy", true);*/
+        Animator animator = characterModel.GetGameObject().GetComponent<Animator>();
+        animator.SetTrigger("isHappy");
 
         // TODO：接触したオブジェクトとanimationParameterの紐付けを作成する。
         // 紐付けたanimationParameterを実行する。

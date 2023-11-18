@@ -63,6 +63,7 @@ public class FbxLoader : MonoBehaviour
             baseCollisionDetection.SetCharacterModel(characterModel);
 
             generatedObject.AddComponent<HealthMonitor>();
+            generatedObject.AddComponent<AnimationTimer>();
         }
         else
         {
@@ -75,7 +76,7 @@ public class FbxLoader : MonoBehaviour
     /// </summary>
     private void AddAnimatorController(GameObject gameObject)    
     {
-        Animator animator = gameObject.AddComponent<Animator>();
+        Animator animator = gameObject.GetComponent<Animator>();
         RuntimeAnimatorController controller = Resources.Load("animation/"+ gameObjectName
             +" Animator Controller") as RuntimeAnimatorController;
         animator.runtimeAnimatorController = controller;
