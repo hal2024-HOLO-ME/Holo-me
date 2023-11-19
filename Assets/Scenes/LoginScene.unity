@@ -387,6 +387,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoginSlate
       objectReference: {fileID: 0}
+    - target: {fileID: 2589716731366296177, guid: 9f64112b24fed0842918ca20dabf1618, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5085798916944279067, guid: 9f64112b24fed0842918ca20dabf1618, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

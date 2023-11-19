@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MoveToRegisterScene : MonoBehaviour
 {
-    // Move to Register Scene
+    /// <summary>
+    /// サインアップ用のシーンに移動
+    /// </summary>
     public void MoveToRegister()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("RegisterScene");
