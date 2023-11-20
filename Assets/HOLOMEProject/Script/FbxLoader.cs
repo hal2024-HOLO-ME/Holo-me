@@ -7,24 +7,24 @@ using UnityEngine;
 /// </summary>
 public class FbxLoader : MonoBehaviour
 {
-    public string gameObjectName;
+    private string gameObjectName;
 
-    public FbxLoader() { }
-
-    public FbxLoader(string gameObjectName)
+    // getter and setter
+    public string GetGameObjectName()
     {
-        this.gameObjectName = gameObjectName;
+        return gameObjectName;
     }
 
-    private void Awake()
+    public void SetGameObjectName(string value)
     {
-        GenerateObject();
+        gameObjectName = value;
     }
+
 
     /// <summary>
     /// オブジェクトを生成し、Hierarchyに追加する。
     /// </summary>
-    private void GenerateObject()
+    public void GenerateObject()
     {
         // 指定したファイルへのパスからFBXファイルを読み込む。
         // Resources/Object/以下に配置すること。
@@ -42,6 +42,7 @@ public class FbxLoader : MonoBehaviour
                     { "Mii", new string[] {"body", "face"} },
                     { "MiiGhost", new string[] {"body", "face"} },
                     { "Holo", new string[] { } },
+                    { "Tanuki", new string[] { "body", "face" } },
                 };
             foreach (Transform child in generatedObject.transform)
             {
