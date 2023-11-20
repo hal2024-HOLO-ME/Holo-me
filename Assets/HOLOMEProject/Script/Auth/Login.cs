@@ -9,23 +9,23 @@ public class Login : MonoBehaviour
     public MRTKUGUIInputField passwordInputField;
     public static string session;
 
-
-    private void Start()
-    {
-        Debug.Log("スクリプトファイルを読み込んだ");
-    }
-
+    /// <summary>
+    /// ログイン処理
+    /// </summary>
     public void HandleLogin()
     {
-        Debug.Log("ボタンが押された");
-        string email = emailInputField.text; // メールアドレスを取得
-        string password = passwordInputField.text; // パスワードを取得
-        Debug.Log(email);
-        Debug.Log(password);
-
+        string email = emailInputField.text;
+        string password = passwordInputField.text;
 
         StartCoroutine(SendLoginRequest(email, password));
     }
+
+    /// <summary>
+    /// メールアドレスとパスワードを受け取りBEで照合する
+    /// </summary>
+    /// <param name="email"></param>
+    /// <param name="password"></param>
+    /// <returns></returns>
 
     private IEnumerator SendLoginRequest(string email, string password)
     {
@@ -43,29 +43,26 @@ public class Login : MonoBehaviour
             }
             else
             {
-                // when success
-                Debug.Log("Login successful!");
-                Debug.Log("Received: " + www.downloadHandler.text);
-                session = www.downloadHandler.text;
-                if (session != null)
-                {
-                    Debug.Log("sessionが取得できた");
-                    // Sceneを遷移する
-                    UnityEngine.SceneManagement.SceneManager.LoadScene("TopScene");
-                    Debug.Log(session);
-
-
-                    // loginButtonとemailInputFieldとpasswordInputFieldを非表示にする
-                    // loginButton.gameObject.SetActive(false);
-                    // emailInputField.gameObject.SetActive(false);
-                    // passwordInputField.gameObject.SetActive(false);
-                }
-                else
-                {
-                    Debug.Log("sessionが取得できなかった");
-                }
-                // ここで認証成功後の処理を行います
+                HandleSuccessfulLogin(www.downloadHandler.text);
             }
+        }
+    }
+
+    /// <summary>
+    /// BEからのレスポンスをハンドリングする
+    /// </summary>
+    /// <param name="response"></param>
+    private void HandleSuccessfulLogin(string response)
+    {
+        session = response;
+        if (!string.IsNullOrEmpty(session))
+        {
+            Debug.Log("sessionが取得できた");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("TopScene");
+        }
+        else
+        {
+            Debug.LogError("sessionが取得できなかった");
         }
     }
 }
