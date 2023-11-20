@@ -42,9 +42,14 @@ public class SizeControl : MonoBehaviour
 
     }
 
-    void OnValueChanged() // 変数が変わったときの処理
+    /// <summary>
+    /// ふれあい度が変わったときの処理
+    /// ふれあい度に応じて大きさ変化、現時点では段階で分けてる
+    /// 成長の割合についてはissu#31にて解決予定
+    /// </summary>
+    void OnValueChanged() 
     {
-        //ふれあい度に応じて大きさ変化、現時点では段階で分けてる
+       
         switch (ContactCount)
         {
             case 1:
