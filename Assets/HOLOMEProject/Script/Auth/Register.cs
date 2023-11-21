@@ -61,7 +61,7 @@ public class Register : MonoBehaviour
         form.AddField("email", email);
         form.AddField("password", password);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost:3001/auth/signup", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost:3001/api/v1/auth/signup", form))
         {
             yield return www.SendWebRequest();
 
