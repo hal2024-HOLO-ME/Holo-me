@@ -552,7 +552,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3515026244165189237, guid: 3e266059866501c40bc00d2614fd9937, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 3e266059866501c40bc00d2614fd9937, type: 3}
 --- !u!4 &317986719 stripped
 Transform:
@@ -2412,7 +2415,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3515026244165189237, guid: 3e266059866501c40bc00d2614fd9937, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 3e266059866501c40bc00d2614fd9937, type: 3}
 --- !u!4 &1201846135 stripped
 Transform:
@@ -2824,6 +2830,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1833287546}
   - component: {fileID: 1833287547}
+  - component: {fileID: 1833287548}
   m_Layer: 0
   m_Name: RadioButtonCollection
   m_TagString: Untagged
@@ -2869,7 +2876,32 @@ MonoBehaviour:
   currentIndex: 0
   onToggleSelected:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1833287548}
+        m_TargetAssemblyTypeName: SelectCharacterType, Assembly-CSharp
+        m_MethodName: OnToggleClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1833287548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833287545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48d35328f351783498a26f8299dc2015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggleCollection: {fileID: 1833287547}
 --- !u!1 &1852308168
 GameObject:
   m_ObjectHideFlags: 0
