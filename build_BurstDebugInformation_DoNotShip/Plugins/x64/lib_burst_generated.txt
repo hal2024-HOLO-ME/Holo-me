@@ -1,4 +1,4 @@
-Library: C:\UPRN23\Holo-me\Temp\BurstOutput\Plugins\x64\lib_burst_generated
+Library: C:\Users\larme\Desktop\みそてん\Holo_re\Holo-me\Temp\BurstOutput\Plugins\x64\lib_burst_generated
 --platform=UWP
 --backend=burst-llvm-15
 --target=X64_SSE2
@@ -48,10 +48,10 @@ Library: C:\UPRN23\Holo-me\Temp\BurstOutput\Plugins\x64\lib_burst_generated
 --assembly-defines=Unity.XR.OpenXR.Features.RuntimeDebugger;
 --assembly-defines=UnityEngine;
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\UPRN23\Holo-me\Temp\Burst
+--temp-folder=C:\Users\larme\Desktop\みそてん\Holo_re\Holo-me\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.10f1/Editor/Data/PlaybackEngines/MetroSupport
---decode-folder=C:\UPRN23\Holo-me\Library\Burst
---output=C:\UPRN23\Holo-me\Temp\BurstOutput\Plugins\x64\lib_burst_generated
+--decode-folder=C:\Users\larme\Desktop\みそてん\Holo_re\Holo-me\Library\Burst
+--output=C:\Users\larme\Desktop\みそてん\Holo_re\Holo-me\Temp\BurstOutput\Plugins\x64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=UnityEngine.XR.Interaction.Toolkit.Utilities.BurstMathUtility, Unity.XR.Interaction.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ProjectOnPlane(Unity.Mathematics.float3&, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null|Unity.Mathematics.float3&, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null|Unity.Mathematics.float3&, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)--1819bc9925667b008fd6c3e6019ccf71
@@ -155,10 +155,10 @@ Library: C:\UPRN23\Holo-me\Temp\BurstOutput\Plugins\x64\lib_burst_generated
 --assembly-defines=Unity.XR.OpenXR.Features.RuntimeDebugger;
 --assembly-defines=UnityEngine;
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\UPRN23\Holo-me\Temp\Burst
+--temp-folder=C:\Users\larme\Desktop\みそてん\Holo_re\Holo-me\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.10f1/Editor/Data/PlaybackEngines/MetroSupport
---decode-folder=C:\UPRN23\Holo-me\Library\Burst
---output=C:\UPRN23\Holo-me\Temp\BurstOutput\Plugins\x64\lib_burst_generated
+--decode-folder=C:\Users\larme\Desktop\みそてん\Holo_re\Holo-me\Library\Burst
+--output=C:\Users\larme\Desktop\みそてん\Holo_re\Holo-me\Temp\BurstOutput\Plugins\x64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=UnityEngine.XR.Interaction.Toolkit.Utilities.BurstMathUtility, Unity.XR.Interaction.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ProjectOnPlane(Unity.Mathematics.float3&, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null|Unity.Mathematics.float3&, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null|Unity.Mathematics.float3&, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)--1819bc9925667b008fd6c3e6019ccf71
