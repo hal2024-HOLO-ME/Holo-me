@@ -15,13 +15,6 @@ public class SelectCharacterType : MonoBehaviour
     /// </summary>
     public void OnToggleClick()
     {
-        if (toggleCollection.CurrentIndex == 0)
-        {
-            characterType = 0;
-        }
-        else if (toggleCollection.CurrentIndex == 1)
-        {
-            characterType = 1;
-        }
+        characterType = toggleCollection.CurrentIndex;
     }
 }
