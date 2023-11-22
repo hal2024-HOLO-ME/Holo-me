@@ -84,20 +84,15 @@ public class SendResult : MonoBehaviour
         {
             case 0:
                 return "ねこ";
-                break;
             case 1:
             case 2:
                 return "いぬ";
-                break;
             case 3:
                 return "たぬき";
-                break;
             case 4:
                 return "きつね";
-                break;
             case 5:
                 return "ミィ";
-                break;
             default:
                 return null;
         }
