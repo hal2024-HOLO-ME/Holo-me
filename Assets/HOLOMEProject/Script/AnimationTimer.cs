@@ -46,7 +46,7 @@ public class AnimationTimer : MonoBehaviour
 
         timerAnimator = Observable
             .Timer(TimeSpan.FromSeconds(10))
-            .Subscribe(_ => FireAnimatorTriggerWithTimer("HappyTrigger"))
+            .Subscribe(_ => FireAnimatorTriggerWithTimer("WalkTrigger"))
             .AddTo(this);
     }
 
