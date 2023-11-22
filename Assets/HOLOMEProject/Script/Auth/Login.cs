@@ -33,7 +33,7 @@ public class Login : MonoBehaviour
         form.AddField("email", email);
         form.AddField("password", password);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost:3001/auth/signin", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost:3001/api/v1/auth/signin", form))
         {
             yield return www.SendWebRequest();
 
