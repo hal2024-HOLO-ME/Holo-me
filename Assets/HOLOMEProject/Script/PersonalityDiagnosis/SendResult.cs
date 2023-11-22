@@ -7,6 +7,7 @@ using UnityEngine;
 public class SendResult : MonoBehaviour
 {
     private int answerCount;
+    private string responseCharacterName;
     public GameObject slate;
     public GameObject personalityDiagnosisResultSlate;
     public TextMeshPro ResultTitle;
@@ -58,10 +59,11 @@ public class SendResult : MonoBehaviour
     private void ProcessResponse(string responseText)
     {
         DiagnosisResponse response = JsonUtility.FromJson<DiagnosisResponse>(responseText);
+        responseCharacterName = response.name.Replace(" ", "");
 
-        ResultTitle.text = "あなたは「 " + response.name + "タイプ」です！";
+        ResultTitle.text = "あなたは「 " + responseCharacterName + "タイプ」です！";
         ResultContents.text = response.description;
-        ResultBelowText.text = "そんなあなたのパートナーは" + response.name + "です";
+        ResultBelowText.text = "そんなあなたのパートナーは" + responseCharacterName + "です";
 
         Sprite newSprite = Resources.Load<Sprite>("Images/" + response.image_path);
         characterImageRenderer.sprite = newSprite;
@@ -72,7 +74,7 @@ public class SendResult : MonoBehaviour
 
     /// <summary>
     /// 性格診断のYes/Noの数と対象のキャラクターを紐付ける
-    /// TODO: ねこの確率たかい・・・
+    /// TODO: いぬの確率たかい・・・
     /// </summary>
     /// <param name="answerCount"></param>
     /// <returns></returns>
