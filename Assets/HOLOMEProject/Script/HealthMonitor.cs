@@ -13,10 +13,21 @@ using Unity.VisualScripting;
 public class HealthMonitor : MonoBehaviour
 {
     private CharacterModel characterModel;
+    public readonly DateTime dateTime;
     /// <summary>
     /// 時刻判定(分刻み)のトリガー
     /// </summary>
     IDisposable minuteTimeTrigger;
+
+    public HealthMonitor()
+    {
+        dateTime = DateTime.Now;
+    }
+
+    public HealthMonitor(DateTime dateTime)
+    {
+        this.dateTime = dateTime;
+    }
 
     void Awake()
     {
@@ -66,13 +77,14 @@ public class HealthMonitor : MonoBehaviour
     /// <returns>睡眠時刻の範囲ならtrueを返す</returns>
     public bool CheckSleepTime()
     {
-        int fromHour = 10;
-        int limitHour = 17;
-        TimeSpan timeOfDay = DateTime.Now.TimeOfDay;
-        TimeSpan startTime = new(fromHour, 0, 0);
-        TimeSpan endTime = new(limitHour, 0, 0);
+        // 現在の時刻を取得
+        TimeSpan timeOfDay = dateTime.TimeOfDay;
 
-        // 睡眠時刻の範囲内かどうかを判定する。
-        return (startTime <= timeOfDay) && (timeOfDay <= endTime);
+        // 00:00 ～ 07:00 の範囲をチェックする
+        TimeSpan startTime = new(0, 0, 0);
+        TimeSpan endTime = new(7, 0, 0);
+
+        // 時間の範囲内か
+        return ((startTime <= timeOfDay) && (timeOfDay <= endTime));
     }
 }
