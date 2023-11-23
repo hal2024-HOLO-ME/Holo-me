@@ -58,10 +58,10 @@ public class FbxLoader : MonoBehaviour
 
 
             CharacterModel characterModel = AddCharacterModel(generatedObject);
-
+/*
             GameObject exfrowerObject = GameObject.Find("exfrower");
             CollisionDetection baseCollisionDetection = exfrowerObject.AddComponent<CollisionDetection>();
-            baseCollisionDetection.SetCharacterModel(characterModel);
+            baseCollisionDetection.SetCharacterModel(characterModel);*/
 
             generatedObject.AddComponent<HealthMonitor>();
             generatedObject.AddComponent<AnimationTimer>();

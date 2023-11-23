@@ -14,8 +14,8 @@ public class PersonalityDiagnosisRadio : MonoBehaviour
     /// <summary>
     /// 性格診断のYes、Noによってカウントを替える。
     /// 以下のカウントで表示するキャラクターを切り替える
-    /// 0、1：ねこ
-    /// 2：いぬ
+    /// 0：ねこ
+    /// 1、2：いぬ
     /// 3：たぬき
     /// 4：きつね
     /// 5：Mii

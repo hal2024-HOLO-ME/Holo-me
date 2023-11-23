@@ -7,6 +7,10 @@ using UnityEngine;
 public class SendResult : MonoBehaviour
 {
     private int answerCount;
+    private string responseCharacterName;
+    
+    // HACK: ここのstatic変数なんとかしたいけど非同期処理の関係でうまく直せない
+    private static string responseFileName;
     public GameObject slate;
     public GameObject personalityDiagnosisResultSlate;
     public TextMeshPro ResultTitle;
@@ -46,7 +50,7 @@ public class SendResult : MonoBehaviour
         }
         else
         {
-            Debug.Log("Failed");
+            Debug.Log("接続に失敗しました");
         }
     }
 
@@ -59,11 +63,15 @@ public class SendResult : MonoBehaviour
     {
         DiagnosisResponse response = JsonUtility.FromJson<DiagnosisResponse>(responseText);
 
-        ResultTitle.text = "あなたは「 " + response.name + "タイプ」です！";
-        ResultContents.text = response.description;
-        ResultBelowText.text = "そんなあなたのパートナーは" + response.name + "です";
+        responseFileName = response.model_name;
+        responseCharacterName = response.name.Replace(" ", "");
 
-        Sprite newSprite = Resources.Load<Sprite>("Images/" + response.image_path);
+
+        ResultTitle.text = "あなたは「 " + responseCharacterName + "タイプ」です！";
+        ResultContents.text = response.description;
+        ResultBelowText.text = "そんなあなたのパートナーは" + responseCharacterName  + "です";
+
+        Sprite newSprite = Resources.Load<Sprite>("Images/" + responseFileName);
         characterImageRenderer.sprite = newSprite;
 
         slate.SetActive(false);
@@ -72,7 +80,7 @@ public class SendResult : MonoBehaviour
 
     /// <summary>
     /// 性格診断のYes/Noの数と対象のキャラクターを紐付ける
-    /// TODO: ねこの確率たかい・・・
+    /// TODO: いぬの確率たかい・・・
     /// </summary>
     /// <param name="answerCount"></param>
     /// <returns></returns>
@@ -82,22 +90,22 @@ public class SendResult : MonoBehaviour
         {
             case 0:
                 return "ねこ";
-                break;
             case 1:
             case 2:
                 return "いぬ";
-                break;
             case 3:
                 return "たぬき";
-                break;
             case 4:
                 return "きつね";
-                break;
             case 5:
                 return "ミィ";
-                break;
             default:
                 return null;
         }
+    }
+
+    public string GetResponseFileName()
+    {
+        return responseFileName;
     }
 }
