@@ -1614,7 +1614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8174955776655707806, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveToShowCharacterScener
+      value: MoveToShowCharacter
       objectReference: {fileID: 0}
     - target: {fileID: 8174955776655707806, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

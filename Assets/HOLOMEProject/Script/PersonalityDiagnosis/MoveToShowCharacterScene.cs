@@ -8,7 +8,7 @@ public class MoveToShowCharacterScene : MonoBehaviour
     /// <summary>
     /// キャラクターを表示用のシーンに移動
     /// </summary>
-    public void MoveToShowCharacterScener()
+    public void MoveToShowCharacter()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("ShowCharacterScene");
     }
