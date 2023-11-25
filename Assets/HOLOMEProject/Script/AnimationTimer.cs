@@ -8,6 +8,14 @@ public class AnimationTimer : MonoBehaviour
     private Animator animator;
     private HealthMonitor healthMonitor;
     private IDisposable timerAnimator = Disposable.Empty;
+    // タイマを止めるためのフラグ
+    private bool isTimePassed = false; // true: タイマーが止まっている状態
+
+    public void SetIsTimePassed(bool value)
+    {
+        isTimePassed = value;
+    }
+
     private void Awake()
     {
         if (!gameObject.TryGetComponent(out animator)) return;
@@ -23,7 +31,7 @@ public class AnimationTimer : MonoBehaviour
            .OnStateEnterAsObservable()
            .Where(x => x.StateInfo.IsName("Idle"))
            .Subscribe(_ => {
-               if (!healthMonitor.CheckSleepTime()) TimerSet();
+               if (!healthMonitor.CheckSleepTime() && !isTimePassed) TimerSet();
            }).AddTo(this);
 
         // Idle状態以外になったらタイマーを止める。
@@ -38,14 +46,14 @@ public class AnimationTimer : MonoBehaviour
 
 
     /// <summary>
-    /// Timerを10秒に設定する。
+    /// Timerを30秒に設定する。
     /// </summary>
-    private void TimerSet()
+    public void TimerSet()
     {
         timerAnimator.Dispose();
 
         timerAnimator = Observable
-            .Timer(TimeSpan.FromSeconds(10))
+            .Timer(TimeSpan.FromSeconds(30))
             .Subscribe(_ => FireAnimatorTriggerWithTimer("WalkTrigger"))
             .AddTo(this);
     }
@@ -54,13 +62,8 @@ public class AnimationTimer : MonoBehaviour
     /// タイマー制約付きでアニメーションを発火させる。
     /// </summary>
     /// <param name="triggerName"></param>
-    private void FireAnimatorTriggerWithTimer(string triggerName)
-    {
-        animator.SetTrigger(triggerName);
-    }
+    private void FireAnimatorTriggerWithTimer(string triggerName) => animator.SetTrigger(triggerName);
+    
 
-    void OnDestroy()
-    {
-        timerAnimator.Dispose();
-    }
+    public void OnDestroy() => timerAnimator.Dispose();
 }
