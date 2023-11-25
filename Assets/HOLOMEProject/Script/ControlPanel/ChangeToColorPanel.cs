@@ -7,17 +7,18 @@ public class ChangeToColorPanel : MonoBehaviour
     public GameObject ColorControlPanel;
     public GameObject BaseControlPanel;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// 初期表示時にカラー変更用パネルを非表示にする
+    /// CHECK: コード上でカラー変更用パネルを非表示にしないと切り替えたときの挙動に違和感があるためコード上で行う
+    /// </summary>
     void Start()
     {
         ColorControlPanel.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    /// <summary>
+    /// デフォルトのコントロールパネルに切り替える
+    /// </summary>
 
     public void ChangeToColorControlPanel()
     {
