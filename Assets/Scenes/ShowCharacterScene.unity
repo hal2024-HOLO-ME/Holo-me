@@ -1169,7 +1169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8110664055982005406, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 74
       objectReference: {fileID: 0}
     - target: {fileID: 8110664055982005406, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1427,8 +1427,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9185fc9919762b4bb8400f976b8c055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorControlPanel: {fileID: 0}
-  BaseControlPanel: {fileID: 0}
+  ColorControlPanel: {fileID: 961292031}
+  BaseControlPanel: {fileID: 2076832168}
 --- !u!1001 &402292102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1881,6 +1881,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad5b753b73e311143a85055b15cea562, type: 3}
+--- !u!1 &525919273 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8829903863008004601, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
+  m_PrefabInstance: {fileID: 1934597175}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &810194038 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: adaa828b61927f247a0fc376755b8e83, type: 3}
@@ -1919,6 +1924,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &961292031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2335485236933921044, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
+  m_PrefabInstance: {fileID: 2007658963}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1327920875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2508,6 +2518,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2007658964}
     m_Modifications:
+    - target: {fileID: 8174955776655707806, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174955776655707806, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174955776655707806, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1934597178}
+    - target: {fileID: 8174955776655707806, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174955776655707806, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeToBaseControlPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174955776655707806, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShowColorCustomizePanel, ScriptsAssembly
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174955776655707806, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
+      propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8829903862454882072, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
       propertyPath: m_LocalScale.x
       value: 500
@@ -2562,7 +2600,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8829903863008004601, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
       propertyPath: m_Name
-      value: PressableButton_128x32mm_TextOnly
+      value: ChangeToBaseContorolButton
       objectReference: {fileID: 0}
     - target: {fileID: 8829903863595505673, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
       propertyPath: m_text
@@ -2588,6 +2626,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8829903863008004601, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1934597178}
     - targetCorrespondingSourceObject: {fileID: 8829903863595505675, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -2597,6 +2638,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8829903862454882072, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
   m_PrefabInstance: {fileID: 1934597175}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1934597178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525919273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9185fc9919762b4bb8400f976b8c055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColorControlPanel: {fileID: 961292031}
+  BaseControlPanel: {fileID: 2076832168}
 --- !u!1001 &2007658963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2792,6 +2847,10 @@ PrefabInstance:
     - target: {fileID: 1369624966173409788, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765622893285320683, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2071170124106991321, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
       propertyPath: m_AnchorMax.y
