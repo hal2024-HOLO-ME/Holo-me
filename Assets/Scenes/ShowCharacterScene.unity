@@ -137,10 +137,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3619542596533218170, guid: ad8dde9b887f5774d95a09aef04f5f45, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3619542596533218171, guid: ad8dde9b887f5774d95a09aef04f5f45, type: 3}
       propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3619542596533218171, guid: ad8dde9b887f5774d95a09aef04f5f45, type: 3}
+      propertyPath: m_LocalScale.z
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3619542596533218171, guid: ad8dde9b887f5774d95a09aef04f5f45, type: 3}
@@ -149,11 +153,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3619542596533218171, guid: ad8dde9b887f5774d95a09aef04f5f45, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: 3619542596533218171, guid: ad8dde9b887f5774d95a09aef04f5f45, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.94
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3619542596533218171, guid: ad8dde9b887f5774d95a09aef04f5f45, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1222,7 +1226,7 @@ PrefabInstance:
     - target: {fileID: 8123656194628151288, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 169343260}
+      objectReference: {fileID: 169343272}
     - target: {fileID: 8123656194628151288, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1233,7 +1237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8123656194628151288, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ShowColorCustomizePanel, ScriptsAssembly
+      value: ChangeToColorPanel, ScriptsAssembly
       objectReference: {fileID: 0}
     - target: {fileID: 8123656194628151288, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1463,9 +1467,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2335485236933921044, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2076832173}
     - targetCorrespondingSourceObject: {fileID: 6492567553477273884, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 364811182}
@@ -1474,14 +1475,14 @@ PrefabInstance:
       addedObject: {fileID: 711098564}
     - targetCorrespondingSourceObject: {fileID: 8123656194628151264, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 169343260}
+      addedObject: {fileID: 169343272}
   m_SourcePrefab: {fileID: 100100000, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
 --- !u!1 &169343259 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8123656194628151264, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
   m_PrefabInstance: {fileID: 169343258}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &169343260
+--- !u!114 &169343272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1490,7 +1491,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 169343259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9185fc9919762b4bb8400f976b8c055, type: 3}
+  m_Script: {fileID: 11500000, guid: bb597caf4acbf244c82955f58193b640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ColorControlPanel: {fileID: 961292031}
@@ -1580,7 +1581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: adaa828b61927f247a0fc376755b8e83, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2493,6 +2494,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1703497123}
   - component: {fileID: 1703497122}
+  - component: {fileID: 1703497124}
   m_Layer: 0
   m_Name: GenerateObject
   m_TagString: Untagged
@@ -2527,6 +2529,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1703497124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703497121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e873513f2cf28b4bbf18002d21c39cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1791517228
 GameObject:
   m_ObjectHideFlags: 0
@@ -2640,7 +2654,7 @@ PrefabInstance:
     - target: {fileID: 8174955776655707806, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1934597178}
+      objectReference: {fileID: 1934597188}
     - target: {fileID: 8174955776655707806, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -2651,7 +2665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8174955776655707806, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ShowColorCustomizePanel, ScriptsAssembly
+      value: ChangeToBasePanel, ScriptsAssembly
       objectReference: {fileID: 0}
     - target: {fileID: 8174955776655707806, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2739,7 +2753,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8829903863008004601, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1934597178}
+      addedObject: {fileID: 1934597188}
     - targetCorrespondingSourceObject: {fileID: 8829903863595505675, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -2749,7 +2763,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8829903862454882072, guid: b97ac347513aa6742be756b1e2884dfd, type: 3}
   m_PrefabInstance: {fileID: 1934597175}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1934597178
+--- !u!114 &1934597188
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2758,7 +2772,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 525919273}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9185fc9919762b4bb8400f976b8c055, type: 3}
+  m_Script: {fileID: 11500000, guid: 61f4977c724384a489aa1887c7787edd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ColorControlPanel: {fileID: 961292031}
@@ -3119,6 +3133,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5713527417212831176, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
+      propertyPath: handType
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713527417212831176, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
+      propertyPath: proximityType
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6331289026251581776, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3429,18 +3451,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2335485236933921044, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
   m_PrefabInstance: {fileID: 169343258}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2076832173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2076832168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e873513f2cf28b4bbf18002d21c39cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
