@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3619542596533218170, guid: ad8dde9b887f5774d95a09aef04f5f45, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3619542596533218171, guid: ad8dde9b887f5774d95a09aef04f5f45, type: 3}
       propertyPath: m_LocalScale.x
@@ -1495,7 +1495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorControlPanel: {fileID: 961292031}
-  BaseControlPanel: {fileID: 2076832168}
+  BaseControlPanel: {fileID: 2335485237100441614}
 --- !u!1 &364811170 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6492567553477273884, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
@@ -1581,7 +1581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: adaa828b61927f247a0fc376755b8e83, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2776,7 +2776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorControlPanel: {fileID: 961292031}
-  BaseControlPanel: {fileID: 2076832168}
+  BaseControlPanel: {fileID: 2335485237100441614}
 --- !u!1001 &2007658963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3446,7 +3446,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3450833885017814221, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
   m_PrefabInstance: {fileID: 2007658963}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2076832168 stripped
+--- !u!1 &2335485237100441614 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2335485236933921044, guid: daf49b991a71d534bb2997ac54ed775f, type: 3}
   m_PrefabInstance: {fileID: 169343258}
